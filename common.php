@@ -11,8 +11,7 @@ $root_dir = getenv('DOCUMENT_ROOT');
 // examples: "/" or "/mystartdirectory/" or "/my/start/directory/"
 $http_dir = "/";
 
-function getparams()
-{
+function getparams() {
   global $start, $len, $fps, $dir, $img, $cam, $index, $action;
   
 /*
@@ -27,82 +26,58 @@ cam:    relative path to http root, where the gallery is located; each cam has i
 action: commands like "delete", "copy", or...;
 */
   
-  if(isset($_GET['start']))
-  {
+  if(isset($_GET['start'])) {
     $start = $_GET['start'];
     if ($start < 0) $start = 0;
-  }
-  else
-  {
+  } else   {
     $start = 0;
   };
 
-  if(isset($_GET['dir']))
-  {
+  if(isset($_GET['dir'])) {
     $dir = $_GET['dir'];
-  }
-  else
-  {
+  } else {
     $dir = "";
   };
 
-  if(isset($_GET['len']))
-  {
+  if(isset($_GET['len'])) {
     $len = $_GET['len'];
-  }
-  else
-  {
+  } else {
    $len = 12;
   };
   
-  if(isset($_GET['fps']))
-  {
+  if(isset($_GET['fps'])) {
     $fps = $_GET['fps'];
-  }
-  else
-  {
+  } else {
      $fps = 1;
   };
   if($fps <= 0) {$fps = 0.0001;};
 
-  if(isset($_GET['img']))
-  {
+  if(isset($_GET['img'])) {
     $img = $_GET['img'];
-  }
-  else
-  {
+  } else {
      $img = "";
   };
   
-  if(isset($_GET['cam']))
-  {
+  if(isset($_GET['cam'])) {
     $cam = $_GET['cam'];
-  }
-  else
-  {
+  } else {
     $cam = "";
   };
-  if(isset($_GET['i']))
-  {
+  if(isset($_GET['i'])) {
     $index = $_GET['i'];
     if ($index < 0) {$i = 0;}
-  }
-  else
-  {
+  } else {
     $i = 0;
   };
-  if(isset($_GET['action']))
-  {
+  if(isset($_GET['action'])) {
     $action = $_GET['action'];
-  }
-  else
-  {
+  } else {
     $action = "";
   };  
   return;
 };
-function navigation_top()
-{
+
+function navigation_top() {
 /*
 Navigation on the top of the gallery; select days, homepage, Timelaps of the day...
 */
@@ -110,70 +85,56 @@ Navigation on the top of the gallery; select days, homepage, Timelaps of the day
     
     echo "<p>";
     
-    
     $env = basename(getenv("SCRIPT_NAME"));
     list($yy,$mm,$dd) = preg_split('/-/',$dir);
 
-    if ($env != 'index.php')
-    {
+    if ($env != 'index.php') {
         echo "<a href='$http_dir"."index.php?cam=$cam'>Home</a>";
-    }
-    else
-    {
+    } else {
         echo "Home";
     };
     echo "<br>";
 
-   
     // echo "Timelapse: ";
     // echo "<a href='$http_dir"."mjpeg.php?cam=$cam&dir=$dir'>".$mm."/".$dd."</a> <br>";
-
-    for($d = 0; $d < sizeof($days); $d++)
-    {
-        $day = $days[$d];
-        list($yy,$mm,$dd) = preg_split('/-/',$day);
-        if ($day == $dir && $env != 'index.php' && $env != 'image.php')
-        {
+    for($d = 0; $d < sizeof($days); $d++) {
+      $day = $days[$d];
+      list($yy,$mm,$dd) = preg_split('/-/',$day);
+      if ($day == $dir && $env != 'index.php' && $env != 'image.php') {
     	echo "$mm/$dd ";
-        }
-        else
-        {
+      } else {
     	echo "<a href='$http_dir"."gallery.php?cam=$cam&dir=$day&len=$len'>".$mm."/".$dd."</a> ";
-        }
+      }
     }
     echo "</p>";
     return;
 }
-function navigation_image_top()
-{
+
+function navigation_image_top() {
 /*
 Navigation on the top of the selected image in image.php; "back" and "next"
 */
     global $dir, $start, $len, $last, $working_dir, $files, $http_dir, $cam, $index;
-    if ($index > 0)
-    {
+    if ($index > 0) {
         $left = $index - 1;
         $file = $files[$left];
         echo "<a href='image.php?cam=$cam&img=$file&dir=$dir&i=$left'><-- back</a> ";
     }
-    if ($index < sizeof($files) - 1)
-    {
+    if ($index < sizeof($files) - 1) {
         $right = $index + 1;
         $file = $files[$right];
         echo " <a href='image.php?cam=$cam&img=$file&dir=$dir&i=$right'>next --></a> ";
     }
 }
-function navigation_bottom()
-{
+
+function navigation_bottom() {
 /*
 Navigation on the bottom of the gallery in gallery.php
 */
     global $dir, $start, $len, $last, $working_dir, $files, $http_dir, $cam; 
     echo "<p>";
-    if($start > 0)
-    {
-        if($start > $len)
-        {
+    if($start > 0) {
+        if($start > $len) {
             $lstart = ($start - 10 * $len);
             if($lstart < 0)
                 $lstart = 0;
@@ -188,29 +149,21 @@ Navigation on the bottom of the gallery in gallery.php
     
     echo " <-- ".date("Y M d H:i:s", ftime($working_dir."/".$files[$start]))." --> ";
     
-    if($last < sizeof($files))
-    {
+    if($last < sizeof($files)) {
         $lstart = ($start + $len);
-        if ($lstart + $len > sizeof($files))
-        {
+        if ($lstart + $len > sizeof($files)) {
 	    $lstart = (sizeof($files) - $len - 1);
 	    if ($lstart < 0) $lstart = 0;
-	}
-	else
-	{
+	} else {
 	    echo "<a href='$http_dir"."gallery.php?cam=$cam&dir=$dir&start=$lstart&len=$len'>next</a>&nbsp;";
 	}
     
-        if($last + $len < sizeof($files))
-        {
+        if($last + $len < sizeof($files)) {
 	    $lstart = ($start + 10 * $len);
-	    if ($lstart + $len > sizeof($files))
-	    {
+	    if ($lstart + $len > sizeof($files)) {
     		$lstart = (sizeof($files) - $len - 1);
     		if ($lstart < 0) $lstart = 0;
-	    }
-	    else
-	    {
+	    } else {
 	        echo "<a href='$http_dir"."gallery.php?cam=$cam&dir=$dir&start=$lstart&len=$len'>10x next</a>&nbsp;";
 	    }
         }
@@ -223,8 +176,8 @@ Navigation on the bottom of the gallery in gallery.php
     echo "</p>";
     return;
 }
-function navigation_image_bottom()
-{
+
+function navigation_image_bottom() {
 /*
 Navigation on the bottom of the selected image in image.php; commands like "delete", "copy", ...
 */
@@ -234,6 +187,7 @@ Navigation on the bottom of the selected image in image.php; commands like "dele
     echo "<a href='image.php?cam=$cam&img=$file&dir=$dir&i=$index&action=copy'>copy to archive</a> ";
     echo "<a href='image.php?cam=$cam&img=$file&dir=$dir&i=$index&action=delete'>delete</a> ";  
 }
+
 function display_current_image($current)
 {
     print "<img src=\"$current\" name=\"refresh\"> \n";
@@ -251,38 +205,30 @@ function display_current_image($current)
     print "</script>  \n";
 }
 
-
-function action()
-{
+function action() {
 /*
     Execute Commands like "delete", "copy", ...
 */
     global $dir, $start, $len, $last, $working_dir, $thumbdir, $files, $http_dir, $cam, $index, $action, $img, $root_dir;
-    if ($action == "delete")
-    {
+    if ($action == "delete") {
         $smallname = $root_dir.$thumbdir."/".$files[$index];
         $largename = $root_dir.$working_dir."/".$files[$index];
         unlink($smallname);
         unlink($largename);
-       if ($index < sizeof($files) - 1)
-       {
+       if ($index < sizeof($files) - 1) {
            $index = $index;
            $img = $files[$index+1];   
-       }
-       else
-       {
-           if ($index > 0)
-           {
+       } else {
+           if ($index > 0) {
                 $index = $index-1;
                 $img = $files[$index-1];   
            }
        }
-             
     }
     
 }
-function getdirs()
-{
+
+function getdirs() {
     global $archive_dir, $days, $last_dir, $working_dir, $thumbdir, $dir, $cam, $root_dir, $http_dir, $current, $current_url;
     // $today = date ("Y-m-d", time());
       
@@ -297,16 +243,12 @@ function getdirs()
     $days = array();
     $pattern = '/\d{4}-\d{2}-\d{2}/';
     // print "archive_dir_abs=$archive_dir_abs<br>\n";
-    if (file_exists($archive_dir_abs))
-    {
+    if (file_exists($archive_dir_abs)) {
         $status = 1;
         $dh = opendir($archive_dir_abs);
-        while (false !== ($filename = readdir($dh)))
-        {
-//           if(!is_dir($filename))
-//           {
-               if (preg_match($pattern,$filename))
-               {
+        while (false !== ($filename = readdir($dh))) {
+//           if(!is_dir($filename)) {
+               if (preg_match($pattern,$filename)) {
                    $days[] = $filename;
                    $fullnamedays[] = $archive_dir_abs."/".$filename;
                }
@@ -327,61 +269,49 @@ function getdirs()
     $thumbdir = $working_dir."/thumbnails";
     return ($status==1);
 }
-function getfiles()
-{
+
+function getfiles() {
     global $working_dir, $files, $root_dir, $fileslist, $thumbdir;
     $working_dir_abs = $root_dir.$working_dir;
-    if (file_exists($working_dir_abs))
-    {
+    if (file_exists($working_dir_abs)) {
         $dh = opendir($working_dir_abs);
         $pattern = '/\d{6,}/';
-        while (false !== ($filename = readdir($dh)))
-        {
-//          if(!is_dir($filename))
-//          {
-            if (preg_match($pattern,$filename))
-                {
-                    $files[] = $filename;
-                    $fullnamefiles[] = $working_dir_abs."/".$filename;
-                    $fileslist[] = $working_dir."/".$filename;
-                }
-//          }
+        while (false !== ($filename = readdir($dh))) {
+            if (preg_match($pattern,$filename) && !is_dir($filename)) {
+                $files[] = $filename;
+                $fullnamefiles[] = $working_dir_abs."/".$filename;
+                $fileslist[] = $working_dir."/".$filename;
+            }
         }
         closedir($dh);
     }
     
-    if (sizeof($files) > 0)
-    {
+    if (sizeof($files) > 0) {
         array_multisort(
             array_map( 'filemtime', $fullnamefiles ),
             SORT_NUMERIC,
             SORT_ASC,
             $fileslist
-            );
+        );
     }
 }
-function rmtree($path)
-{
-    if (is_dir($path))
-    {
-        foreach (scandir($path) as $name)
-        {
-            if (in_array($name, array('.', '..')))
-            {
+
+function rmtree($path) {
+    if (is_dir($path)) {
+        foreach (scandir($path) as $name) {
+            if (in_array($name, array('.', '..'))) {
                 continue;
             }
             $subpath = $path.DIRECTORY_SEPARATOR.$name;
             rmtree($subpath);
         }
         rmdir($path);
-    }
-    else
-    {
+    } else {
         unlink($path);
     }
 }
-function ftime($file)
-{
+
+function ftime($file) {
     $epoctime = (int)basename($file);
     return($epoctime);
 }
