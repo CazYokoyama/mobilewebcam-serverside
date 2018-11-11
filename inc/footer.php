@@ -1,6 +1,6 @@
 <div id='footer'>
   <?php
     $version = VERSION;
-    print "<p>opensmartcam.com, V$version, ME-Me&szlig;systeme GmbH <a href=\"http://www.me-systeme.de/impressum.html\">imprint</a>, <a href=\"http://www.me-systeme.de\">www.me-systeme.de</a>, <a href=\"mailto:info@me-systeme.de\">info@me-systeme.de</a></p>";
+    print "<p>mobilewebcam, V$version<a href=\"http://www.caztech.com\"</a>, <a href=\"http://www.caztech.com\">www.caztech.com</a>, <a href=\"mailto:caz@caztech.com\">caz@caztech.com</a></p>";
   ?>
 </div>
