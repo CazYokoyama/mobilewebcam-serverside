@@ -3,6 +3,7 @@
 // version 1.03, 12/16/2012;
 
 $uploadfile = "";
+date_default_timezone_set("America/Los_Angeles");
 $today = date ("Y-m-d", time());
 // all archives are in "root_dir" of the gallery
 $root_dir = "archive";

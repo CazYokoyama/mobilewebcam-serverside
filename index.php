@@ -11,6 +11,7 @@
 <html>
 <body>
     <?php
+        date_default_timezone_set("America/Los_Angeles");
         navigation_top();
     ?>
     <?php print "<img src=\"$current\" name=\"refresh\">\n" ?>
