@@ -9,7 +9,7 @@ $root_dir = getenv('DOCUMENT_ROOT');
 // the directory with uploaded files may be a subdirectory of this;
 // you may have several subdirectories, each subdirectory with one gallery for one camera
 // examples: "/" or "/mystartdirectory/" or "/my/start/directory/"
-$http_dir = "/";
+$http_dir = "/mobilewebcam/";
 
 function getparams() {
   global $start, $len, $fps, $dir, $img, $cam, $index, $action;
