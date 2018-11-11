@@ -19,8 +19,8 @@
         function Reload() {
             tmp = new Date();
             tmp = "?"+tmp.getTime()
-            //        document.images["refresh"].src = image+tmp
-            setTimeout("Reload()",1000)
+            document.images["refresh"].src = image+tmp
+            setTimeout("Reload()",300)
         }
         Reload();
     </script>
