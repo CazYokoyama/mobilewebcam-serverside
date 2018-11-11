@@ -287,9 +287,9 @@ function getfiles() {
     
     if (sizeof($files) > 0) {
         array_multisort(
-            array_map( 'filemtime', $fullnamefiles ),
-            SORT_NUMERIC,
+            $files,
             SORT_ASC,
+            SORT_NUMERIC,
             $fileslist
         );
     }
