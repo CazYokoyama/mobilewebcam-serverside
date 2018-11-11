@@ -24,6 +24,9 @@
         }
         Reload();
     </script>
+    <?php
+        feeding_log();
+    ?>
 
 </body>
 </html>

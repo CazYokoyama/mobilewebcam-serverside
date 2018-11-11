@@ -315,4 +315,14 @@ function ftime($file) {
     $epoctime = (int)basename($file);
     return($epoctime);
 }
+
+function feeding_log() {
+    global $dir, $len, $days, $root_dir, $cam, $http_dir;
+
+    echo "<p>";
+
+    echo "<a href='$http_dir"."$cam/log.txt'>".'Feeding log'."</a> <br>";
+    echo "</p>";
+    return;
+}
 ?>
