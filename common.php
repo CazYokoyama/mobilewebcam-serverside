@@ -89,7 +89,7 @@ Navigation on the top of the gallery; select days, homepage, Timelaps of the day
     list($yy,$mm,$dd) = preg_split('/-/',$dir);
 
     if ($env != 'index.php') {
-        echo "<a href='$http_dir"."index.php?cam=$cam'>Home</a>";
+        echo "<a href='$http_dir"."index.php?cam=$cam'></a>";
     } else {
         echo "pictures of ".$cam." | ";
     };
