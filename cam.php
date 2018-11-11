@@ -10,8 +10,8 @@ $root_dir = "archive";
 // every day a new directory archive/2012-09-08, archive/2012-09-09, ...
 $working_dir = $root_dir."/$today";
 
-// create thumbnails in directory archive/2012-09-08/320x240"
-$thumbdir = $working_dir."/320x240";
+// create thumbnails in directory archive/2012-09-08/thumbnails"
+$thumbdir = $working_dir."/thumbnails";
 
 if(strlen(basename($_FILES["userfile"]["name"])) > 0) {
     $uploadfile = basename($_FILES["userfile"]["name"]);
@@ -41,8 +41,8 @@ if(strlen(basename($_FILES["userfile"]["name"])) > 0) {
     if(!file_exists($smallname)) {
         $image = @imagecreatefromjpeg($archivefile);
         if($image) {
-	    $new_image = imagecreatetruecolor(320, 240);
-	    imagecopyresampled($new_image, $image, 0, 0, 0, 0, 320, 240, imagesx($image), imagesy($image));
+	    $new_image = imagecreatetruecolor(240, 180);
+	    imagecopyresampled($new_image, $image, 0, 0, 0, 0, 240, 180, imagesx($image), imagesy($image));
 	    imagejpeg($new_image, $smallname);
 	    echo "Thumbnail Ok!";
 	} else
