@@ -91,9 +91,8 @@ Navigation on the top of the gallery; select days, homepage, Timelaps of the day
     if ($env != 'index.php') {
         echo "<a href='$http_dir"."index.php?cam=$cam'>Home</a>";
     } else {
-        echo "Home";
+        echo "pictures of ".$cam." | ";
     };
-    echo "<br>";
 
     // echo "Timelapse: ";
     // echo "<a href='$http_dir"."mjpeg.php?cam=$cam&dir=$dir'>".$mm."/".$dd."</a> <br>";
@@ -103,7 +102,7 @@ Navigation on the top of the gallery; select days, homepage, Timelaps of the day
       if ($day == $dir && $env != 'index.php' && $env != 'image.php') {
     	echo "$mm/$dd ";
       } else {
-    	echo "<a href='$http_dir"."gallery.php?cam=$cam&dir=$day&len=$len'>".$mm."/".$dd."</a> ";
+	echo "<a href='$http_dir"."gallery.php?cam=$cam&dir=$day&len=$len'>".$mm."/".$dd."</a> ";
       }
     }
     echo "</p>";
