@@ -49,7 +49,6 @@
           <input type="button" id="PauseContinue" name="Pause" value="Pause ||" onClick="pause(1)";>
           <input type="button" id="ForwardRewind" name="Change" value="Rewind <<" onClick="rewind(1)";>
         </form>
-        <span id="fooBar">&nbsp;</span>
       </div> <!--id=content-->
     </div> <!--id=wrapper-->
 
