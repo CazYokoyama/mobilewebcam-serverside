@@ -5,8 +5,6 @@
   // comment out the following 4 lines, if you do not use a database and no registration script:
   session_start();
   session_regenerate_id(true);
-  require 'register/includes/functions.php';
-  require 'register/includes/config.php';
 
   // read cgi parameters, scan directories, prepare a list of pictures:
   require 'common.php';
@@ -26,7 +24,6 @@
         include("inc/navi.php");
       ?>
       <div id='content'>
-        <p><a href='index.php<?php print "?cam=$cam&dir=";?>'>Index</a></p>
         <img name="foto">
         <SCRIPT LANGUAGE="JavaScript">
           var Pic = new Array();
