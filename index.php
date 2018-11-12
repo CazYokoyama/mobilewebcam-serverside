@@ -27,6 +27,7 @@
     </script>
     <?php
         feeding_log();
+        include("inc/footer.php");
     ?>
 
 </body>

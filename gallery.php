@@ -39,4 +39,6 @@ navigation_bottom();
 
 echo "</body></html>";
 
+include("inc/footer.php");
+
 ?>
