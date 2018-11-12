@@ -10,6 +10,7 @@ $root_dir = getenv('DOCUMENT_ROOT');
 // you may have several subdirectories, each subdirectory with one gallery for one camera
 // examples: "/" or "/mystartdirectory/" or "/my/start/directory/"
 $http_dir = "/mobilewebcam/";
+$VERSION = "<a href='$http_dir"."changelog.txt'>2.00</a>";
 
 function getparams() {
   global $start, $len, $fps, $dir, $img, $cam, $index, $action;
