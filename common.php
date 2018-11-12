@@ -117,6 +117,8 @@ Navigation on the top of the selected image in image.php; "back" and "next"
         $left = $index - 1;
         $file = $files[$left];
         echo "<a href='image.php?cam=$cam&img=$file&dir=$dir&i=$left'><-- back</a> ";
+    } else {
+        echo "<-- back ";
     }
     if ($index < sizeof($files) - 1) {
         $right = $index + 1;
