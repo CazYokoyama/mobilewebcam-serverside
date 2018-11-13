@@ -92,7 +92,7 @@ Navigation on the top of the gallery; select days, homepage, Timelaps of the day
     if ($env != 'index.php') {
         echo "<a href='$http_dir"."index.php?cam=$cam'></a>";
     } else {
-        echo "pictures of ".$cam." | ";
+        echo "pictures of ".$cam." | archive: ";
     };
 
     for($d = 0; $d < sizeof($days); $d++) {
@@ -260,9 +260,7 @@ function getdirs() {
 
     array_multisort(
         $days,
-        // array_map( 'filemtime', $fullnamedays ),
-        // SORT_NUMERIC,
-        SORT_ASC
+        SORT_DESC
     );
     $last_dir = end($days);
     if ($dir == "") $dir = $last_dir;
