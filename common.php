@@ -98,12 +98,11 @@ Navigation on the top of the gallery; select days, homepage, Timelaps of the day
     for($d = 0; $d < sizeof($days); $d++) {
       $day = $days[$d];
       list($yy,$mm,$dd) = preg_split('/-/',$day);
-      if ($day == $dir && $env != 'index.php' && $env != 'image.php') {
-        echo "Timelapse: ";
-        echo "<a href='$http_dir"."mjpeg.php?cam=$cam&dir=$dir'>".$mm."/".$dd."</a> <br>";
-      } else {
-	echo "<a href='$http_dir"."gallery.php?cam=$cam&dir=$day&len=$len'>".$mm."/".$dd."</a> ";
-      }
+      if ($env == 'gallery.php') {
+        if ($day == $dir)
+          echo "<a href='$http_dir"."mjpeg.php?cam=$cam&dir=$dir'>"."Timelapse</a>";
+      } else
+	echo "<a href='$http_dir"."gallery.php?cam=$cam&dir=$day&len=$len'>  ".$mm."/".$dd."</a> ";
     }
     echo "</p>";
     return;
