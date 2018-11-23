@@ -9,6 +9,7 @@
     getfiles();
 ?>
 <html>
+<head><title>mobilewebcam</title></head>
 <body>
     <?php
         date_default_timezone_set("America/Los_Angeles");
