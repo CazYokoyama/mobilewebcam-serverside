@@ -104,6 +104,8 @@ Navigation on the top of the gallery; select days, homepage, Timelaps of the day
       } else
 	echo "<a href='$http_dir"."gallery.php?cam=$cam&dir=$day&len=$len'>  ".$mm."/".$dd."</a> ";
     }
+    echo " | From Caz: You are free to use ";
+    echo "<a href='http://www.caztech.com/glider/softrf/prime-mk2/in-the-shed/DSC_0005.JPG'>".'SoftRF in the shed'."</a>";
     echo "</p>";
     return;
 }
