@@ -92,7 +92,7 @@ Navigation on the top of the gallery; select days, homepage, Timelaps of the day
     if ($env != 'index.php') {
         echo "<a href='$http_dir"."index.php?cam=$cam'></a>";
     } else {
-        echo "pictures of ".$cam." | archive: ";
+        echo "North Plains Glider port | archive: ";
     };
 
     for($d = 0; $d < sizeof($days); $d++) {
