@@ -5,7 +5,7 @@
 # copyright(c) 2018 Caz Yokoyama, caz@caztech.com
 #
 
-TOP_DIR=/srv/www-html/html/mobilewebcam
+TOP_DIR=/srv/www-html/mobilewebcam
 PHOTO_DIR=archive
 KEEP=10 # days
 deletestart=`date --date="${KEEP} days ago" +%Y%m%d`

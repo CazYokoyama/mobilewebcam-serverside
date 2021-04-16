@@ -1,2 +1,2 @@
-23 05 * * * /srv/www-html/html/mobilewebcam/clean/cleanup.sh
+23 05 * * * /srv/www-html/mobilewebcam/clean/cleanup.sh
 
