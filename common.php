@@ -321,9 +321,7 @@ function feeding_log() {
 
     echo "<p>";
 
-    echo "<a href='$http_dir"."$cam/log.txt'>".'Feeding log'."</a>";
-    echo " | You are free to use ";
-    echo "<a href='http://www.caztech.com/glider/softrf/prime-mk2/in-the-shed/DSC_0005.JPG'>".'SoftRF in the shed'."</a>";
+    echo "<a href='$http_dir"."$cam/log.txt'>".'Feeding log'."</a> <br>";
     echo "</p>";
     return;
 }
