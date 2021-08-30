@@ -105,7 +105,7 @@ Navigation on the top of the gallery; select days, homepage, Timelaps of the day
 	echo "<a href='$http_dir"."gallery.php?cam=$cam&dir=$day&len=$len'>  ".$mm."/".$dd."</a> ";
     }
     echo " | From Caz: ";
-    echo "<a href='http://www.caztech.com/glider/UartBridge/connect_XCSoar_SoftRF'>".'connect SoftRF to XCSoar and Tophat'."</a>";
+    echo "<a href='https://www.ebay.com/itm/334100293758'>".'SoftRF for sale'."</a>";
     echo "</p>";
     return;
 }
@@ -321,7 +321,9 @@ function feeding_log() {
 
     echo "<p>";
 
-    echo "<a href='$http_dir"."$cam/log.txt'>".'Feeding log'."</a> <br>";
+    echo "<a href='$http_dir"."$cam/log.txt'>".'Feeding log'."</a>";
+    echo " | ";
+    echo "<a href='https://www.ebay.com/itm/334126054607'>".'SoftRF+KoboMini+3000mAh+BME280 for sale'."</a>";
     echo "</p>";
     return;
 }
