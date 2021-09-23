@@ -192,23 +192,6 @@ Navigation on the bottom of the selected image in image.php; commands like "dele
     echo "<a href='image.php?cam=$cam&img=$file&dir=$dir&i=$index&action=delete'>delete</a> ";  
 }
 
-function display_current_image($current)
-{
-    print "<img src=\"$current\" name=\"refresh\"> \n";
-    print "<script language=\"JavaScript\" type=\"text/javascript\"> \n";
-    print "<!-- \n";
-    print "image = \"$current\" \n";
-    print "function Reload() { \n";
-    print "tmp = new Date() \n";
-    print "tmp = \"?\"+tmp.getTime() \n"; 
-    print "document.images[\"refresh\"].src = image+tmp \n";
-    print "setTimeout(\"Reload()\",1000) \n";
-    print "} \n";
-    print "Reload() \n";
-    print "// --> \n";
-    print "</script>  \n";
-}
-
 function action() {
 /*
     Execute Commands like "delete", "copy", ...
