@@ -49,9 +49,6 @@ if(strlen(basename($_FILES["userfile"]["name"])) > 0) {
 	} else
 	  echo "Error create thumbnail!.<br>";
 
-	$fh = fopen("log.txt", 'w') or die("Error: Can't open log file!");
-	fwrite($fh, $uploadlog);
-	fclose($fh);
     }
 }
 

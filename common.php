@@ -302,12 +302,7 @@ function ftime($file) {
 }
 
 function feeding_log() {
-    global $dir, $len, $days, $root_dir, $cam, $http_dir;
-
     echo "<p>";
-
-    echo "<a href='$http_dir"."$cam/log.txt'>".'Feeding log'."</a>";
-    echo " | ";
     echo "<a href='https://youtu.be/xK_1-n17VuE'>".'Video of WiFi Extender'."</a>";
     echo " | ";
     echo "<a href='https://youtu.be/WLuGj9YzOiI'>".'SoftRF makes warning sound'."</a>";
