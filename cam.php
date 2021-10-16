@@ -20,6 +20,7 @@ $thumbdir = $working_dir."/thumbnails";
 if(strlen(basename($_FILES["userfile"]["name"])) > 0) {
     $uploadfile = basename($_FILES["userfile"]["name"]);
     $timestamp = basename($_POST["timestamp"]);
+    $caption = basename($_POST["caption"]);
 
     if(!file_exists($root_dir))
         mkdir($root_dir, 0777);
@@ -43,6 +44,7 @@ if(strlen(basename($_FILES["userfile"]["name"])) > 0) {
         $strlen = strlen($timestamp);
         $x_loc = $width - $font_width * $strlen;
         $y_loc = $height - 5;
+        imagettftext($img, $font_height, 0, 5, $y_loc, $white, $font, $caption);
         imagettftext($img, $font_height, 0, $x_loc, $y_loc, $white, $font, $timestamp);
         imagejpeg($img, $uploadfile, 100);
 
