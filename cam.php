@@ -2,6 +2,9 @@
 // new file uploaded? copy to $root_dir; create thumbnail;
 // version 1.03, 12/16/2012;
 
+$font_width = 16;
+$font_height = 24;
+
 $uploadfile = "";
 date_default_timezone_set("America/Los_Angeles");
 $today = date ("Y-m-d", time());
@@ -16,7 +19,7 @@ $thumbdir = $working_dir."/thumbnails";
 
 if(strlen(basename($_FILES["userfile"]["name"])) > 0) {
     $uploadfile = basename($_FILES["userfile"]["name"]);
-    $uploadlog = basename($_POST["log"]);
+    $timestamp = basename($_POST["timestamp"]);
 
     if(!file_exists($root_dir))
         mkdir($root_dir, 0777);
@@ -32,6 +35,17 @@ if(strlen(basename($_FILES["userfile"]["name"])) > 0) {
         $filename = time().".jpg";
         $archivefile =  $working_dir."/".$filename;
 	$smallname = $thumbdir."/".$filename;
+
+        $img = imagecreatefromjpeg($uploadfile);
+        $white = imagecolorallocate($img, 255, 255, 255);
+        $font = "../OpenSans-Regular.ttf";
+        list($width, $height, $type, $attr) = getimagesize($uploadfile);
+        $strlen = strlen($timestamp);
+        $x_loc = $width - $font_width * $strlen;
+        $y_loc = $height - 5;
+        imagettftext($img, $font_height, 0, $x_loc, $y_loc, $white, $font, $timestamp);
+        imagejpeg($img, $uploadfile, 100);
+
 	copy($uploadfile, $archivefile);
 	if ($uploadfile <> 'current.jpg')
 	    rename ($uploadfile, 'current.jpg');
