@@ -5,7 +5,8 @@
 # copyright(c) 2018 Caz Yokoyama, caz@caztech.com
 #
 
-TOP_DIR=/srv/www-html/mobilewebcam
+# The path to this script must be absolute
+TOP_DIR=$(dirname $0)/..
 PHOTO_DIR=archive
 KEEP=10 # days
 deletestart=`date --date="${KEEP} days ago" +%Y%m%d`

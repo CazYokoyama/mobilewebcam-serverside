@@ -1,2 +1,2 @@
-23 05 * * * /srv/www-html/mobilewebcam/clean/cleanup.sh
-
+23 05 * * * /var/www/html/mobilewebcam/clean/cleanup.sh
+33 05 * * * /var/www/html/glider/wvsc/webcam/mobilewebcam-serverside/clean/cleanup.sh
