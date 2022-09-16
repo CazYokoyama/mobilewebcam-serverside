@@ -102,7 +102,7 @@ Navigation on the top of the gallery; select days, homepage, Timelaps of the day
         if ($day == $dir)
           echo "<a href='$http_dir"."mjpeg.php?cam=$cam&dir=$dir'>"."Timelapse</a>";
       } else
-	echo "<a href='$http_dir"."gallery.php?cam=$cam&dir=$day&len=$len'>  ".$mm."/".$dd."</a> ";
+	    echo "<a href='$http_dir"."gallery.php?cam=$cam&dir=$day&len=$len'>  ".$mm."/".$dd."</a> ";
     }
     echo " | ForSale: ";
     echo "<a href='https://www.ebay.com/itm/334100293758'>".'SoftRF - Prime MarkII'."</a>";
