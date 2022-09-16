@@ -8,7 +8,7 @@
 # The path to this script must be absolute
 TOP_DIR=$(dirname $0)/..
 PHOTO_DIR=archive
-KEEP=10 # days
+KEEP=300 # days
 deletestart=`date --date="${KEEP} days ago" +%Y%m%d`
 
 for photo_dir in ${TOP_DIR}/*/${PHOTO_DIR}; do

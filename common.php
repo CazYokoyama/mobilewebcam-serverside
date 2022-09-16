@@ -83,6 +83,8 @@ function navigation_top() {
 Navigation on the top of the gallery; select days, homepage, Timelaps of the day...
 */
     global $dir, $len, $days, $root_dir, $cam, $http_dir;    
+
+	$days_to_list = 10;
     
     echo "<p>";
     
@@ -95,7 +97,7 @@ Navigation on the top of the gallery; select days, homepage, Timelaps of the day
         echo "North Plains Glider port | archive: ";
     };
 
-    for($d = 0; $d < sizeof($days); $d++) {
+    for($d = 0; $d < $days_to_list; $d++) {
       $day = $days[$d];
       list($yy,$mm,$dd) = preg_split('/-/',$day);
       if ($env == 'gallery.php') {
