@@ -1,2 +1,5 @@
 *~
 *.jpg
+*.pickle
+*.stat
+*.html
