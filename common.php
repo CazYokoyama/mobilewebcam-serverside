@@ -302,9 +302,6 @@ function ftime($file) {
 }
 
 function feeding_log() {
-    echo "<p>";
-    echo "<a href='https://youtu.be/WLuGj9YzOiI'>".'SoftRF makes warning sound'."</a>";
-    echo "</p>";
     return;
 }
 ?>
