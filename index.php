@@ -22,7 +22,7 @@
             tmp = new Date();
             tmp = "?"+tmp.getTime()
             document.images["refresh"].src = image+tmp
-            setTimeout("Reload()", 180000)
+            setTimeout("Reload()", 120000)
         }
         Reload();
     </script>
