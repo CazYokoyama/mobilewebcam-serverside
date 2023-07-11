@@ -67,16 +67,14 @@ if ($uploadOk == 0) {
 // if everything is ok, try to upload file
 }
 else {
-  if (move_uploaded_file($_FILES["imageFile"]["tmp_name"], $target_file)) {
+  $imagefile = basename($_FILES["imageFile"]["name"]);
+  if (move_uploaded_file($_FILES["imageFile"]["tmp_name"], $imagefile)) {
+    echo "The file ". $imagefile . " has been uploaded.";
     $filename = time().".jpg";
     $archivefile =  $working_dir."/".$filename;
     $smallname = $thumbdir."/".$filename;
-    copy($target_file, $archivefile);
-
-    if ($target_file <> 'current.jpg')
-        rename ($target_file, 'current.jpg');
-
-    echo "The file ". basename( $_FILES["imageFile"]["name"]). " has been uploaded.";
+    copy($imagefile, $archivefile);
+    rename($imagefile, 'current.jpg');
   }
   else {
     echo "Sorry, there was an error uploading your file.";
