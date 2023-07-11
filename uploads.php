@@ -9,6 +9,17 @@ $target_file = $target_dir . date('Y.m.d_H:i:s_', $datum) . basename($_FILES["im
 $uploadOk = 1;
 $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
 
+date_default_timezone_set("America/Los_Angeles");
+$today = date ("Y-m-d", time());
+// all archives are in "root_dir" of the gallery
+$root_dir = "archive";
+
+// every day a new directory archive/2012-09-08, archive/2012-09-09, ...
+$working_dir = $root_dir."/$today";
+
+// create thumbnails in directory archive/2012-09-08/thumbnails"
+$thumbdir = $working_dir."/thumbnails";
+
 // Check if image file is a actual image or fake image
 if(isset($_POST["submit"])) {
   $check = getimagesize($_FILES["imageFile"]["tmp_name"]);
@@ -40,6 +51,15 @@ if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg
   echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
   $uploadOk = 0;
 }
+
+if (!file_exists($root_dir))
+    mkdir($root_dir, 0777);
+
+if (!file_exists($working_dir))
+    mkdir($working_dir, 0777);
+
+if (!file_exists($thumbdir))
+    mkdir($thumbdir, 0777);
 
 // Check if $uploadOk is set to 0 by an error
 if ($uploadOk == 0) {
