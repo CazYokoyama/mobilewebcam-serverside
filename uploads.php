@@ -3,6 +3,9 @@
 // Complete project details at https://RandomNerdTutorials.com/esp32-cam-post-image-photo-server/
 // Code Based on this example: w3schools.com/php/php_file_upload.asp
 
+$font_width = 16;
+$font_height = 24;
+
 $uploadOk = 1;
 
 date_default_timezone_set("America/Los_Angeles");
@@ -56,6 +59,22 @@ else {
     $filename = time().".jpg";
     $archivefile =  $working_dir."/".$filename;
     $smallname = $thumbdir."/".$filename;
+
+    $img = imagecreatefromjpeg($imagefile);
+    list($width, $height, $type, $attr) = getimagesize($imagefile);
+
+    $black = imagecolorallocate($img, 0, 0, 0);
+    imagefilledrectangle($img, 0, $height - $font_height - 10, $width, $height, $black);
+
+    $timestamp = date ("Y/m/d H:i:s", time());
+    $white = imagecolorallocate($img, 255, 255, 255);
+    $font = "../OpenSans-Regular.ttf";
+    $strlen = strlen($timestamp);
+    $x_loc = $width - $font_width * $strlen;
+    $y_loc = $height - 5;
+    imagettftext($img, $font_height, 0, $x_loc, $y_loc, $white, $font, $timestamp);
+    imagejpeg($img, $imagefile, 100);
+
     copy($imagefile, $archivefile);
     rename($imagefile, 'current.jpg');
   }
