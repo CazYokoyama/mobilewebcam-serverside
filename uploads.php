@@ -73,12 +73,24 @@ else {
     $smallname = $thumbdir."/".$filename;
     copy($target_file, $archivefile);
 
-    copy($target_file, "current.jpg");
+    if ($target_file <> 'current.jpg')
+        rename ($target_file, 'current.jpg');
 
     echo "The file ". basename( $_FILES["imageFile"]["name"]). " has been uploaded.";
   }
   else {
     echo "Sorry, there was an error uploading your file.";
+  }
+
+  if (!file_exists($smallname)) {
+      $image = @imagecreatefromjpeg($archivefile);
+      if (!$image) {
+          echo "can't create thumbnail.";
+      }
+
+      $new_image = imagecreatetruecolor(240, 180);
+      imagecopyresampled($new_image, $image, 0, 0, 0, 0, 240, 180, imagesx($image), imagesy($image));
+      imagejpeg($new_image, $smallname);
   }
 }
 ?>
