@@ -63,12 +63,16 @@ else {
     $img = imagecreatefromjpeg($imagefile);
     list($width, $height, $type, $attr) = getimagesize($imagefile);
 
+    $white = imagecolorallocate($img, 255, 255, 255);
+    imagefilledrectangle($img, 0, 0, $width, $font_height + 10, $white);
+
     $black = imagecolorallocate($img, 0, 0, 0);
+    $font = "../OpenSans-Regular.ttf";
+    imagettftext($img, $font_height, 0, 0, $font_height, $black, $font, basename(getcwd()));
+
     imagefilledrectangle($img, 0, $height - $font_height - 10, $width, $height, $black);
 
     $timestamp = date ("Y/m/d H:i:s", time());
-    $white = imagecolorallocate($img, 255, 255, 255);
-    $font = "../OpenSans-Regular.ttf";
     $strlen = strlen($timestamp);
     $x_loc = $width - $font_width * $strlen;
     $y_loc = $height - 5;
