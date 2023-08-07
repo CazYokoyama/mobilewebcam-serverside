@@ -72,6 +72,11 @@ else {
 
     imagefilledrectangle($img, 0, $height - $font_height - 10, $width, $height, $black);
 
+    $ip_title = "IP:";
+    imagettftext($img, $font_height, 0, 0, $height - 5, $white, $font, $ip_title);
+    $ip = $_POST["ip"];
+    imagettftext($img, $font_height, 0, $font_width * strlen($ip_title), $height - 5, $white, $font, $ip);
+
     $timestamp = date ("Y/m/d H:i:s", time());
     $strlen = strlen($timestamp);
     $x_loc = $width - $font_width * $strlen;
