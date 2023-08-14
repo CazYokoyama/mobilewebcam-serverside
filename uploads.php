@@ -55,7 +55,7 @@ if ($uploadOk == 0) {
 else {
   $imagefile = basename($_FILES["imageFile"]["name"]);
   if (move_uploaded_file($_FILES["imageFile"]["tmp_name"], $imagefile)) {
-    echo "The file ". $imagefile . " has been uploaded.";
+    echo $imagefile . " has been uploaded to " . basename(getcwd());
     $filename = time().".jpg";
     $archivefile =  $working_dir."/".$filename;
     $smallname = $thumbdir."/".$filename;
