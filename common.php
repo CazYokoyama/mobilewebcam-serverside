@@ -107,7 +107,7 @@ Navigation on the top of the gallery; select days, homepage, Timelaps of the day
 	    echo "<a href='$http_dir"."gallery.php?cam=$cam&dir=$day&len=$len'>  ".$mm."/".$dd."</a> ";
     }
     echo " | ForSale: ";
-    echo "<a href='https://www.ebay.com/itm/334100293758'>".'SoftRF - Prime MarkII'."</a>";
+    echo "<a href='https://www.ebay.com/itm/334963573312'>".'SoftRF - Prime MarkII'."</a>";
     echo "</p>";
     return;
 }
