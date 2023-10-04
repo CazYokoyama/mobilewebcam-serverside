@@ -9,7 +9,7 @@ $root_dir = getenv('DOCUMENT_ROOT');
 // the directory with uploaded files may be a subdirectory of this;
 // you may have several subdirectories, each subdirectory with one gallery for one camera
 // examples: "/" or "/mystartdirectory/" or "/my/start/directory/"
-$http_dir = "/glider/wvsc/webcam/mobilewebcam-serverside/";
+$http_dir = "/camera/mobilewebcam-serverside/";
 $VERSION = "<a href='$http_dir"."changelog.txt'>2.00</a>";
 
 function getparams() {
