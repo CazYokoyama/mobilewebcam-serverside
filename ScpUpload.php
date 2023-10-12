@@ -19,21 +19,10 @@ $working_dir = $root_dir."/$today";
 // create thumbnails in directory archive/2012-09-08/thumbnails"
 $thumbdir = $working_dir."/thumbnails";
 
-// Check if image file is a actual image or fake image
-if(isset($_POST["submit"])) {
-  $check = getimagesize($_FILES["imageFile"]["tmp_name"]);
-  if($check !== false) {
-    echo "File is an image - " . $check["mime"] . ".";
-    $uploadOk = 1;
-  }
-  else {
-    echo "File is not an image.";
-    $uploadOk = 0;
-  }
-}
+$imagefile = $argv[1];
 
 // Check file size
-if ($_FILES["imageFile"]["size"] > 500000) {
+if (filesize($imagefile) > 500000) {
   echo "Sorry, your file is too large.";
   $uploadOk = 0;
 }
@@ -47,15 +36,11 @@ if (!file_exists($working_dir))
 if (!file_exists($thumbdir))
     mkdir($thumbdir, 0777);
 
-// Check if $uploadOk is set to 0 by an error
-if ($uploadOk == 0) {
-  echo "Sorry, your file was not uploaded.";
-// if everything is ok, try to upload file
+if (!file_exists($imagefile)) {
+  echo $imagefile . " was not uploaded.";
 }
 else {
-  $imagefile = basename($_FILES["imageFile"]["name"]);
-  if (move_uploaded_file($_FILES["imageFile"]["tmp_name"], $imagefile)) {
-    echo $imagefile . " has been uploaded to " . basename(getcwd());
+    echo $imagefile . " has been uploaded to " . basename(getcwd()) . "\n";
     $filename = time().".jpg";
     $archivefile =  $working_dir."/".$filename;
     $smallname = $thumbdir."/".$filename;
@@ -74,7 +59,7 @@ else {
 
     $ip_title = "IP:";
     imagettftext($img, $font_height, 0, 0, $height - 5, $white, $font, $ip_title);
-    $ip = $_POST["ip"];
+    $ip = $argv[2];
     imagettftext($img, $font_height, 0, $font_width * strlen($ip_title), $height - 5, $white, $font, $ip);
 
     $timestamp = date ("Y/m/d H:i:s", time());
@@ -86,10 +71,6 @@ else {
 
     copy($imagefile, $archivefile);
     rename($imagefile, 'current.jpg');
-  }
-  else {
-    echo "Sorry, there was an error uploading your file.";
-  }
 
   if (!file_exists($smallname)) {
       $image = @imagecreatefromjpeg($archivefile);
